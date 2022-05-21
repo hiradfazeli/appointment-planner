@@ -5,31 +5,17 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const {contacts, setContacts} = useState([
-    {
-      name: 'Hirad Fazeli',
-      phone: '995579245036',
-      email: 'hirad.fazeli94@gmail.com'
-    },
-    {
-      name: 'Steven Jobs',
-      phone: '017787654321',
-      email: 'S.jobs@apple.com'
-    }
-  ]);
-  const {appoitnments, setAppointments} = useState([]);
   /*
   Define state variables for 
   contacts and appointments 
   */
-
-  
 
   const ROUTES = {
     CONTACTS: "/contacts",
     APPOINTMENTS: "/appointments",
   };
 
+  const [contacts, setContacts] = useState([]);
   const addContact = (name, phone, email) => {
     const contact = {
       name,
@@ -37,10 +23,11 @@ function App() {
       email,
     }
     setContacts(prev => {
-      return [contact, ...prev];
+      return [...prev, contact];
     })
   }
 
+  const [appoitnments, setAppointments] = useState([]);
   const addAppointment = (title, contact, date, time) => {
     const appointment = {
       title,
@@ -49,7 +36,7 @@ function App() {
       time,
     }
     setAppointments(prev => {
-      return [appointment, ...prev];
+      return [...prev, appointment];
     })
   }
 
