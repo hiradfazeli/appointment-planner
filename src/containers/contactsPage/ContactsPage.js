@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import {ContactForm} from '../../components/contactForm/ContactForm';
 import {TileList} from '../../components/tileList/TileList';
 
@@ -28,22 +29,20 @@ export const ContactsPage = ({contacts, addContact}) => {
 
 
   useEffect(() => {
-    const nameCheck = () => {
-      const found = contacts.filter(item => {
-        return item.name !== name;
-      })
-      if(found) {
+    const nameIsDuplicate = () => {
+      const found = contacts.find((contact) => contact.name === name);
+      if (found !== undefined) {
         return true;
       }
       return false;
-    } 
+    };
 
-    if(nameCheck()) {
+    if (nameIsDuplicate()) {
       setDuplicate(true);
     } else {
       setDuplicate(false);
     }
-  }, [name, contacts, duplicate])
+  }, [name, contacts, duplicate]);
   /*
   Using hooks, check for contact name in the 
   contacts array variable in props

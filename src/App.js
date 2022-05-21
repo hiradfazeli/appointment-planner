@@ -27,7 +27,7 @@ function App() {
     })
   }
 
-  const [appoitnments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   const addAppointment = (title, contact, date, time) => {
     const appointment = {
       title,
@@ -67,7 +67,8 @@ function App() {
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {/* Add props to AppointmentsPage */}
-            <AppointmentsPage appoitnments={appoitnments}
+            <AppointmentsPage appointments={appointments}
+                              contacts={contacts}
                               addAppointment={addAppointment} />
           </Route>
         </Switch>
